@@ -5,7 +5,7 @@
 ## Tabla de contenido
 
 - [Descripcion general](#descripcion-general)
-- [Módulos](#módulos)
+- [Caracteristicas](#caracteristicas)
 - [Arquitectura del Sistema](#arquitectura-del-sistema)
 - [Tecnologías usadas](#tecnologías-usadas)
 - [Recursos Azure Desplegados](#recursos-azure-desplegados)
@@ -40,30 +40,30 @@ En este ejemplo podemos observar el flujo completo de interacción entre el cien
 
 1. Persistencia con trazabilidad: Al hacer clic en "Registrar", la recomendación queda guardada en el journal junto con su fuente, creando un rastro auditable de cómo se llegó a cada decisión experimental.
 
-[Demo: ]()
+
 
 ---
 
-##  Módulos
+## Caracteristicas
 
+Este proyecto propociona a los laboratorios las siguiente caracteristicas:
 
-| Modulo                     | Descripcion                                                                                                                                                                             |
-| ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Gestión de Experimentos         | CRUD de proyectos y experimentos con estructura jerárquica                                                           |
-| Diario de Laboratorio        | Registro de anotaciones, observaciones y resultados |
-| Almacenamiento de Archivos | Subida y gestión de PDFs, imágenes, CSVs en Blob Storage                                                                                |
-| Procesamiento de Documentos     | OCR para imágenes y extracción de texto de PDFs                                                                                                                     |
-| Asistente IA                      | Chat contextual con capacidad de grounding en documentos del laboratorio                                                                                               |
-| Búsqueda Semántica                           | RAG sobre la base de conocimiento experimenta                                                                          |
-
+* **Gestion de exprimentos**: Registro de proyectos y experimientos con una estructura jerarquica
+* **Diagrio de laboratorio**: Registro de anotaciones, observaciones y resultado
+* **Almacenamientos de Archivos**: Permite subir y gestionar archivos PDFs, imagenes, CSVs
+* **Interacion por voz**: Permite a los cientifico registrar e interacturar con el asitente mediante la voz.
+* **Procesamiento de Documentos**: OCR para imagenes y extraccion de texto de PDFs
+* **Asistente AI**: Chat contextual con capacidad de grounding en documentos del laboratorio
+* **Busqueda Semantica**: RAG sobre base de conocimiento 
 ---
 
 ## Arquitectura del Sistema
 
+El proyecto esta compuesto de las siguiente capas y tecnologias.
 
 | **Capa**                   | **Tecnologia**                   | **Descripción** |
 | -------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
-| Frotend     | React + Bootstrap | SPA con panel lateral de chat y visor de documentos|
+| Frotend     | Next.js + Tailwind | SPA con panel lateral de chat y visor de documentos|
 | Backend API | Azure Function (Python) | Orquestador API y lógica de negocio |
 | Base de datos            | Azure SQL (capa gratuita)           | Persistencia relacional de experiementos|
 | Almacenamiento              | Azure Blob Storage  | Repositorio de documentos, imagenes y resultados|
@@ -71,9 +71,11 @@ En este ejemplo podemos observar el flujo completo de interacción entre el cien
 | LLM | GPT-4o-mini | Razonamiento sobre protocolo y resultados |
 | Procesamiento | Azure AI Vision | OCR y extraccion de tablas |
 
+---
+
 ## Diagrama de la arquitectura
 
-![Diagrama arquitectura](./img/diagrama-arquitectura-alma.png)
+![Diagrama arquitectura](./docs/img/diagrama-arquitectura-alma.png)
 
 ---
 
@@ -91,16 +93,14 @@ En este ejemplo podemos observar el flujo completo de interacción entre el cien
 
 ## Recursos Azure Desplegados
 
-|Recurso |	Nombre |	Región |	Propósito |
+<!-- |Recurso |	Nombre |	Región |	Propósito |
 | -------------------------- | -------------------------------- | -------------------------------- | -------------------------------- | 
 |Resource Group |	rg-alma |	East US |	Contenedor principal|
 Storage Account |	stalma01 |	East US |	Blob storage para archivos|
 SQL Server |	svr-alma-01 |	West US |	Servidor de base de datos |
 SQL Database |	db-free-sql-alma |	West US |	Base de datos transaccional |
 
----
-
-Funcionamiento de la Aplicación
+--- -->
 
 Estrategia de Testeo
 
