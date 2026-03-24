@@ -6,10 +6,14 @@
         |-- agent.yaml
         |-- openapi.json
 |-- alma-api
-    |-- .env
-    |-- .gitignore
-    |-- main.py
-    |-- requirements.txt
+    |-- app
+        |-- .env
+        |-- .gitignore
+        |-- main.py
+        |-- requirements.txt
+        |-- startup.txt
+        |-- __pycache__
+            |-- main.cpython-314.pyc
 |-- apps
     |-- web
         |-- .gitignore
@@ -88,6 +92,7 @@
         |-- dasboard-alma.jpeg
         |-- diagrama-arquitectura-alma.png
         |-- ejmplo-principal-alma.jpeg
+|-- notebooks
 |-- packages
     |-- shared
         |-- types
