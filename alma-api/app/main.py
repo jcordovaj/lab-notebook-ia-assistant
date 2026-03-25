@@ -33,6 +33,7 @@ client = AzureOpenAI(
 # Modelo de entrada
 class ChatRequest(BaseModel):
     message: str
+    files: list[str] = []
 
 # Endpoint de salud
 @app.get("/health")
