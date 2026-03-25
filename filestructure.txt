@@ -22,9 +22,13 @@
             |-- __init__.py
             |-- __pycache__
                 |-- embeddings.cpython-314.pyc
+                |-- test_embeddings.cpython-314.pyc
+                |-- __init__.cpython-314.pyc
         |-- startup.txt
+        |-- __init__.py
         |-- __pycache__
             |-- main.cpython-314.pyc
+            |-- __init__.cpython-314.pyc
 |-- apps
     |-- web
         |-- .gitignore

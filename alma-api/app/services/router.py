@@ -5,7 +5,7 @@ def route(query: str, files: list):
     if files:
         file_types = [f.lower() for f in files]
 
-        if any(ft.endswith((".pdf", ".csv", ".docx", ".xlsx")) for ft in file_types):
+        if any(ft.endswith((".pdf", ".csv", ".docx", ".xlsx", ".txt")) for ft in file_types):
             return "rag"
 
         if any(ft.endswith((".png", ".jpg", ".jpeg", ".mp3", ".wav")) for ft in file_types):
