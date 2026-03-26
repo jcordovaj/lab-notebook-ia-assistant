@@ -22,16 +22,12 @@ def load_prompt(path):
     with open(path, "r", encoding="utf-8") as f:
         return f.read()
 
-SYSTEM_PROMPT_4    = load_prompt("app/prompts/system_prompt_4.txt")
-
-#SYSTEM_PROMPT_4    = os.getenv("SYSTEM_PROMPT_4")
-SYSTEM_PROMPT_NANO = os.getenv("SYSTEM_PROMPT_NANO")
-
+# SYSTEM_PROMPT_4    = load_prompt("app/prompts/system_prompt_4.txt")
+SYSTEM_PROMPT_NANO = load_prompt("app/prompts/system_router.txt")
 
 class ChatRequest(BaseModel):
     message: str
     files  : list[str] = []
-
 
 @app.get("/health")
 def health():
