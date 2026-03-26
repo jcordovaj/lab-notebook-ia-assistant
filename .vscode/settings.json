@@ -1,5 +1,6 @@
 {
     "python.analysis.extraPaths": [
         "./alma-api/app/services"
-    ]
+    ],
+    "python-envs.defaultEnvManager": "ms-python.python:system"
 }
