@@ -1,31 +1,33 @@
 import base64
 
+def encode_file(file):
+    return base64.b64encode(file.file.read()).decode("utf-8")
+
 def build_multimodal_message(query, files):
 
     content = []
 
-    # texto del usuario
     if query:
         content.append({
             "type": "text",
             "text": query
         })
 
-    # archivos
     for file in files:
-        # suponiendo que recibes base64 o bytes
-        base64_image = encode_file(file)
+        if file.filename.lower().endswith((".png", ".jpg", ".jpeg")):
 
-        content.append({
-            "type": "image_url",
-            "image_url": {
-                "url": f"data:image/png;base64,{base64_image}"
-            }
-        })
+            base64_image = encode_file(file)
+
+            content.append({
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/png;base64,{base64_image}"
+                }
+            })
 
     return [
         {
-            "role"   : "user",
+            "role": "user",
             "content": content
         }
     ]
