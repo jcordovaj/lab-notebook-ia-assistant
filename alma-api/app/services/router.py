@@ -1,3 +1,11 @@
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def root():
+    return {"status": "ok"}
+
 def route(query: str, files: list):
     query_lower = query.lower()
 
