@@ -8,6 +8,7 @@ from services.llm_service import call_nano
 from services.router import route
 from services.rag_service import rag_answer
 from services.multimodal_service import multimodal_answer
+from services.content_safety_service import check_text_safety
 
 load_dotenv()
 
@@ -36,10 +37,10 @@ def health():
     return {"status": "ok"}
 
 def rag_fallback(query):
-    return f"[RAG NO IMPLEMENTADO] Consulta recibida: {query}"
+    return f"[RAG EN CONSTRUCCION] Consulta recibida: {query}"
 
-def multimodal_fallback():
-    return "[MULTIMODAL NO IMPLEMENTADO]"
+def multimodal_fallback(query):
+    return f"[MULTIMODAL REQUIERE INTERVENCION DEL SUPERVISOR] Consulta recibida: {query}"
 
 @app.post("/chat_upload")
 async def chat_upload(
@@ -47,6 +48,15 @@ async def chat_upload(
     persistence: str = Form("temporary"),
     files: Optional[List[UploadFile]] = File(None)
 ):
+    safety = check_text_safety(message)
+
+    if not safety["allowed"]:
+        return {
+            "reply"  : "No puedo ayudar con esa solicitud porque puede involucrar contenido sensible o peligroso.",
+            "blocked": True,
+            "safety" : safety
+        }
+        
     try:
         files = files or []
         reply = await multimodal_answer(message, files, persistence)
@@ -57,6 +67,15 @@ async def chat_upload(
 
 @app.post("/chat")
 async def chat(req: ChatRequest):
+    safety = check_text_safety(req.message)
+
+    if not safety["allowed"]:
+        return {
+            "reply": "No puedo ayudar con esa solicitud porque puede involucrar contenido sensible o peligroso.",
+            "blocked": True,
+            "safety": safety
+        }
+        
     try:
         route_type = route(req.message, req.files)
         print("ROUTE:", route_type)

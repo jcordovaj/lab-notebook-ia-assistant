@@ -14,6 +14,22 @@ search_client = SearchClient(
     credential=AzureKeyCredential(os.getenv("AZURE_SEARCH_KEY"))
 )
 
+# RAG helper dominios
+def infer_domain(doc_id: str) -> str:
+    if not doc_id:
+        return "unknown"
+
+    s = doc_id.lower()
+
+    if "/docs/ethics/" in s:
+        return "ethics"
+    if "/docs/protocols/" in s:
+        return "protocols"
+    if "/docs/biologia/" in s:
+        return "biologia"
+
+    return "unknown"
+
 # 1. Buscar documentos
 def search_documents(query: str):
     embedding = get_embedding(query)

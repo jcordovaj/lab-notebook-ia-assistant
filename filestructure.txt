@@ -91,6 +91,7 @@
         |-- requirements.txt
         |-- requirements_backup.txt
         |-- services
+            |-- content_safety_service.py
             |-- embeddings.py
             |-- llm_service.py
             |-- multimodal_service.py
@@ -100,6 +101,7 @@
             |-- trusted_sources.py
             |-- __init__.py
             |-- __pycache__
+                |-- content_safety_service.cpython-311.pyc
                 |-- embeddings.cpython-311.pyc
                 |-- embeddings.cpython-312.pyc
                 |-- embeddings.cpython-314.pyc
@@ -404,6 +406,64 @@
                         |-- top_level.txt
                         |-- WHEEL
                     |-- azure
+                        |-- ai
+                            |-- contentsafety
+                                |-- aio
+                                    |-- _client.py
+                                    |-- _configuration.py
+                                    |-- _operations
+                                        |-- _operations.py
+                                        |-- _patch.py
+                                        |-- __init__.py
+                                        |-- __pycache__
+                                            |-- _operations.cpython-311.pyc
+                                            |-- _patch.cpython-311.pyc
+                                            |-- __init__.cpython-311.pyc
+                                    |-- _patch.py
+                                    |-- _vendor.py
+                                    |-- __init__.py
+                                    |-- __pycache__
+                                        |-- _client.cpython-311.pyc
+                                        |-- _configuration.cpython-311.pyc
+                                        |-- _patch.cpython-311.pyc
+                                        |-- _vendor.cpython-311.pyc
+                                        |-- __init__.cpython-311.pyc
+                                |-- models
+                                    |-- _enums.py
+                                    |-- _models.py
+                                    |-- _patch.py
+                                    |-- __init__.py
+                                    |-- __pycache__
+                                        |-- _enums.cpython-311.pyc
+                                        |-- _models.cpython-311.pyc
+                                        |-- _patch.cpython-311.pyc
+                                        |-- __init__.cpython-311.pyc
+                                |-- py.typed
+                                |-- _client.py
+                                |-- _configuration.py
+                                |-- _model_base.py
+                                |-- _operations
+                                    |-- _operations.py
+                                    |-- _patch.py
+                                    |-- __init__.py
+                                    |-- __pycache__
+                                        |-- _operations.cpython-311.pyc
+                                        |-- _patch.cpython-311.pyc
+                                        |-- __init__.cpython-311.pyc
+                                |-- _patch.py
+                                |-- _serialization.py
+                                |-- _vendor.py
+                                |-- _version.py
+                                |-- __init__.py
+                                |-- __pycache__
+                                    |-- _client.cpython-311.pyc
+                                    |-- _configuration.cpython-311.pyc
+                                    |-- _model_base.cpython-311.pyc
+                                    |-- _patch.cpython-311.pyc
+                                    |-- _serialization.cpython-311.pyc
+                                    |-- _vendor.cpython-311.pyc
+                                    |-- _version.cpython-311.pyc
+                                    |-- __init__.cpython-311.pyc
                         |-- common
                             |-- client_factory.py
                             |-- cloud.py
@@ -1155,6 +1215,14 @@
                                     |-- _upload_helpers.cpython-311.pyc
                                     |-- _version.cpython-311.pyc
                                     |-- __init__.cpython-311.pyc
+                    |-- azure_ai_contentsafety-1.0.0.dist-info
+                        |-- INSTALLER
+                        |-- LICENSE
+                        |-- METADATA
+                        |-- RECORD
+                        |-- REQUESTED
+                        |-- top_level.txt
+                        |-- WHEEL
                     |-- azure_common-1.1.28.dist-info
                         |-- INSTALLER
                         |-- LICENSE
