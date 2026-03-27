@@ -46,7 +46,6 @@ def search_documents(query: str):
         print("ERROR SEARCH:", str(e))
         return []
 
-
 # 2. Construir contexto
 def build_context(docs):
     context = ""
@@ -60,8 +59,11 @@ def rag_answer(query: str):
     try:
         docs = search_documents(query)
         if not docs:
+            sources = get_trusted_sources("ethics")
+            if sources:
+                return "No encontré información interna. Fuentes sugeridas:\n" + "\n".join(sources)
             return "No hay información en la base de conocimiento"
-
+        
         context = build_context(docs)
 
         messages = [
