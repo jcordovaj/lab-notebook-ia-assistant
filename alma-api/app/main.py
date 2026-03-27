@@ -3,10 +3,9 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
-#from router import route
-#from llm_service import call_gpt4o, call_nano
-from services.llm_service import call_gpt4o, call_nano
-from services.router import route
+from app.services.llm_service import call_nano
+from app.services.router import route
+from app.services.rag_service import rag_answer
 
 load_dotenv()
 
@@ -20,14 +19,16 @@ app.add_middleware(
     allow_headers    =["*"],
 )
 
-SYSTEM_PROMPT_4    = os.getenv("SYSTEM_PROMPT_4")
-SYSTEM_PROMPT_NANO = os.getenv("SYSTEM_PROMPT_NANO")
+def load_prompt(path):
+    with open(path, "r", encoding="utf-8") as f:
+        return f.read()
 
+# SYSTEM_PROMPT_4    = load_prompt("app/prompts/system_prompt_4.txt")
+SYSTEM_PROMPT_NANO = load_prompt("app/prompts/system_router.txt")
 
 class ChatRequest(BaseModel):
     message: str
     files  : list[str] = []
-
 
 @app.get("/health")
 def health():
@@ -48,11 +49,11 @@ async def chat(req: ChatRequest):
         if route_type == "simple":
             reply = call_nano([
                 {"role": "system", "content": SYSTEM_PROMPT_NANO},
-                {"role": "user", "content"  : req.message}
+                {"role": "user"  , "content"  : req.message}
             ])
 
         elif route_type == "rag":
-            reply = rag_fallback(req.message)
+            reply = rag_answer(req.message)
 
         elif route_type == "multimodal":
             reply = multimodal_fallback()
@@ -63,5 +64,5 @@ async def chat(req: ChatRequest):
         return {"reply": reply}
 
     except Exception as e:
-        print("ERROR:", str(e))
+        print("ERROR   :", str(e))
         return {"error": str(e), "type": "system_error"}
