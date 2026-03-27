@@ -79,6 +79,7 @@
     |-- .env
     |-- app
         |-- .gitignore
+        |-- create_index.py
         |-- main.py
         |-- prompts
             |-- system_assistant.txt
@@ -94,7 +95,6 @@
             |-- prompt_service.py
             |-- rag_service.py
             |-- router.py
-            |-- test_embeddings.py
             |-- __init__.py
             |-- __pycache__
                 |-- embeddings.cpython-311.pyc

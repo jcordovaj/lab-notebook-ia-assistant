@@ -23,18 +23,19 @@ def search_documents(query: str):
         results = search_client.search(
             search_text="",
             vector_queries=[{
+                "kind": "vector",
                 "vector": embedding,
                 "k": 3,
                 "fields": "embedding"
             }],
-            select=["content", "source"]
+            select=["content", "source", "title"]
         )
 
         docs = []
         for r in results:
             docs.append({
                 "content": r.get("content", ""),
-                "source": r.get("source", "unknown")
+                "source" : r.get("source", "unknown")
             })
 
         return docs
