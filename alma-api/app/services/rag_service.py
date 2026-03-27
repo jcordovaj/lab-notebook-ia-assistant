@@ -21,13 +21,14 @@ def search_documents(query: str):
 
     try:
         results = search_client.search(
-            search_text="",
+            search_text=query,
             vector_queries=[{
                 "kind": "vector",
                 "vector": embedding,
-                "k": 3,
+                "k": 8,
                 "fields": "embedding"
             }],
+            top=8,
             select=["content", "source", "title"]
         )
 
