@@ -27,7 +27,7 @@
 
 ## 📋 Descripcion general
 
-Lab Notebook AI (ALMA) es una plataforma web online dedicada al area cientifica, que sirve para asistir a los laboratorios en las actividades que permitan gestionar protocolos experimentales sin perder el juicio cientifico.
+**Lab Notebook AI (ALMA)** es una plataforma web online dedicada al area cientifica, que sirve para asistir a los laboratorios en las actividades que permitan gestionar protocolos experimentales sin perder el juicio cientifico.
 
 ![Vista principal](./docs/img/dasboard-alma.jpeg)
 
